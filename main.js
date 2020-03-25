@@ -49,14 +49,12 @@ function displayWeather(data) {
     weatherIconDiv.children[0].appendChild(image);
     var tempMinKelvin = allWeatherData.main.temp_min;
     var tempLowF = convertToFahrenheit(tempMinKelvin)
-    console.log(tempLowF);
     var tempHighKelvin = allWeatherData.main.temp_max;
     var tempHighF = convertToFahrenheit(tempHighKelvin)
-    console.log(tempHighF);
-    // .weather.main;
-    // var div = document.createElement('div');
-    // div.textContent = data.weather.main;
-    // document.body.appendChild(div);
+    weatherIconDiv.children[1].firstChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
+    weatherIconDiv.children[2].firstChild.textContent = "Humidity: " + allWeatherData.main.humidity;
+    weatherIconDiv.children[3].firstChild.textContent = allWeatherData.name;
+
 }
 
 function getMarketDetails(id){
