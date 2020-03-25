@@ -11,20 +11,22 @@
 <body>
     <main class='container'>
         <section class="jumbo-header d-flex flex-wrap">
-            <div class="title col-6">
+            <div class="title col-sm-6">
                 <h1>Farmers Market Finder</h1>
                 <h2>Find Farmers Markets Near You</h2>
                 <form  action="" class="d-flex flex-wrap">
-                    <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="96744">
-                    <button id="findMarket" type="submit">Find Market</button>
+                    <div class='col-12'>
+                        <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="96744">
+                    </div>
+                    <button id="findMarket" class="col-sm-4" type="submit">Find Market</button>
                 </form>
             </div>
-            <div id="weather" class="col-6 d-flex flex-wrap">
+            <div id="weather" class="col-sm-6 d-flex flex-wrap">
                 <div id="weatherIcon" class="col-12"></div>
-                <div class="col-6">
+                <div class="col-xl-6">
                     <p></p>
                 </div>
-                <div class="col-6">
+                <div class="col-xl-6">
                     <p></p>
                 </div>
                 <div class="col-12">
