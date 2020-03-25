@@ -37,6 +37,7 @@ function displayMarketData(data) {
     var marketName = null;
 
     for (var i = 0; i < marketPlaceData.length; i++) {
+        var classList = ['market-name', 'address', 'schedule', 'products']
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
         var distance = marketName.slice(0, 3);
@@ -48,9 +49,16 @@ function displayMarketData(data) {
         var distanceText = document.createElement('p');
         distanceText.textContent = distance;
         distanceDiv.appendChild(distanceText);
-
+        var marketInfoDiv = document.createElement('div');
+        marketInfoDiv.setAttribute('class', 'market-info col-9');
+        for (var list = 0; list < classList.length; list++) {
+            var marketDetailDiv = document.createElement('div');
+            marketDetailDiv.setAttribute('class', classList[i]);
+            marketInfoDiv.appendChild(marketDetailDiv);
+        }
         singleMarketContainer.appendChild(distanceDiv);
         farmersMarketList.appendChild(singleMarketContainer);
+        farmersMarketList.appendChild(marketInfoDiv);
 
 
         // marketId = marketPlaceData[i].id;

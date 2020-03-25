@@ -16,13 +16,13 @@
     background-image: url(assets/weatherIcons/clear-sky-02d.png);
 }
 .weather-icon-03d, .weather-icon-03n {
-    background-image: url(assets/weatherIcons/clear-sky-03d.png);
+    background-image: url(assets/weatherIcons/scattered-clouds-03d.png);
 }
 .weather-icon-04d, .weather-icon-04n {
     background-image: url(assets/weatherIcons/broken-clouds-04d.png);
 }
 .weather-icon-09d, .weather-icon-09n {
-    background-image: url(assets/weatherIcons/clear-sky-09.png);
+    background-image: url(assets/weatherIcons/shower-rain-09d.png);
 }
 .weather-icon-10d, .weather-icon-10n {
     background-image: url(assets/weatherIcons/rain-10d.png);
@@ -31,8 +31,8 @@
     background-image: url(assets/weatherIcons/thunderstorm-11d.png);
 }
 .weather-icon-13d, .weather-icon-13n {
-    background-image: url(assets/weatherIcons/thunderstorm-13d.png);
+    background-image: url(assets/weatherIcons/snow-13d.png);
 }
 .weather-icon-50d, .weather-icon-50n {
-    background-image: url(assets/weatherIcons/thunderstorm-50d.png);
+    background-image: url(assets/weatherIcons/mist-50d.png);
 }
