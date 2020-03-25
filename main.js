@@ -47,8 +47,8 @@ function displayWeather(data) {
     // var image = document.createElement('img');
     // image.setAttribute('src', "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
     // weatherIconDiv.children[0].appendChild(image);
-    weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 rain-" + weatherIcon);
-    weatherIconDiv.children[0].lastElementChild.textContent = weatherData.main;
+    weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 weather-icon-" + weatherIcon);
+    weatherIconDiv.children[0].lastElementChild.textContent = weatherData.description;
     var tempMinKelvin = allWeatherData.main.temp_min;
     var tempLowF = convertToFahrenheit(tempMinKelvin)
     var tempHighKelvin = allWeatherData.main.temp_max;
