@@ -4,6 +4,9 @@ var weatherData = null;
 var allWeatherData = null;
 var marketId = null;
 var marketDetails = null;
+var findMarketButton = document.getElementById('findMarket');
+findMarketButton.addEventListener('click', getZipCode);
+
 
 function getMarketResults(zip) {
     userZip = zip;
@@ -64,4 +67,13 @@ function displayMarketDetails(id){
     var div = document.createElement('div');
     div.textContent = marketDetails.marketdetails.address;
     document.body.appendChild(div);
+}
+
+// function eventListenters(){
+
+
+function getZipCode(event){
+    event.preventDefault();
+    var input
+    console.log("findMarket clicked")
 }
