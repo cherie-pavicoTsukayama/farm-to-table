@@ -31,17 +31,36 @@ function getWeather(userZip) {
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
-    var marketId = marketPlaceData[0].id
-    console.log("displayMarketData", data.results);
-    console.log(marketId)
-    getMarketDetails(marketId)
-    // for (var i = 0; i < data.results.length; i++) {
+    var marketId = null;
+    console.log("displayMarketData", marketPlaceData);
+
+    var marketName = null;
+
+    for (var i = 0; i < marketPlaceData.length; i++) {
+        marketName = marketPlaceData[i].marketname;
+        var marketNameOnly = marketName.slice(4);
+        var distance = marketName.slice(0, 3);
+        var farmersMarketList = document.getElementById('farmersMarketList');
+        var singleMarketContainer = document.createElement('div')
+        singleMarketContainer.setAttribute('class', 'd-felx');
+        var distanceDiv = document.createElement('div');
+        distanceDiv.setAttribute('class', 'distance col-3')
+        var distanceText = document.createElement('p');
+        distanceText.textContent = distance;
+        distanceDiv.appendChild(distanceText);
+
+        singleMarketContainer.appendChild(distanceDiv);
+        farmersMarketList.appendChild(singleMarketContainer);
 
 
-    //     var div = document.createElement('div');
-    //     div.textContent = data.results[i].marketname;
-    //     document.body.appendChild(div)
-    // }
+        // marketId = marketPlaceData[i].id;
+        // getMarketDetails(marketId)
+        // console.log("market Id:", marketId)
+        // var div = document.createElement('div');
+        // div.setAttribute('class', "container col")
+        // div.textContent = data.results[i].marketname;
+        // document.body.appendChild(div)
+    }
 }
 
 function displayWeather(data) {
@@ -74,8 +93,8 @@ function getMarketDetails(id){
 }
 
 
-function displayMarketDetails(id){
-    console.log(id)
+function displayMarketDetails(singleMarketDetail){
+    console.log(singleMarketDetail)
     // marketDetails = id;
     // var div = document.createElement('div');
     // div.textContent = marketDetails.marketdetails.address;
