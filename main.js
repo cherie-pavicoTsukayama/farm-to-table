@@ -8,8 +8,7 @@ var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
 
 
-function getMarketResults(zip) {
-    userZip = zip;
+function getMarketResults(userZip) {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -80,4 +79,5 @@ function getZipCode(event){
         return;
     }
     console.log("findMarket clicked:", userZip);
+    getWeather(userZip);
 }
