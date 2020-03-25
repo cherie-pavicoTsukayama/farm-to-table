@@ -9,11 +9,11 @@ findMarketButton.addEventListener('click', getZipCode);
 
 
 function getMarketResults() {
-    var zipNum = parseInt(userZip);
+    userZip = parseInt(userZip);
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zipNum,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip,
         dataType: 'jsonp',
         success: displayMarketData,
         error: console.error
@@ -31,13 +31,14 @@ function getWeather(userZip) {
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
-    var marketId = null;
     console.log("displayMarketData", marketPlaceData);
 
     var marketName = null;
+    var marketInfo = document.getElementsByClassName('market-info');
 
     for (var i = 0; i < marketPlaceData.length; i++) {
         var classList = ['market-name', 'address', 'schedule', 'products']
+        marketId = marketPlaceData[i].id;
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
         var distance = marketName.slice(0, 3);
@@ -53,22 +54,17 @@ function displayMarketData(data) {
         marketInfoDiv.setAttribute('class', 'market-info col-9');
         for (var list = 0; list < classList.length; list++) {
             var marketDetailDiv = document.createElement('div');
-            marketDetailDiv.setAttribute('class', classList[i]);
+            marketDetailDiv.setAttribute('class', classList[list]);
+            var marketDetailP = document.createElement('p');
+            marketDetailDiv.appendChild(marketDetailP);
             marketInfoDiv.appendChild(marketDetailDiv);
         }
         singleMarketContainer.appendChild(distanceDiv);
         farmersMarketList.appendChild(singleMarketContainer);
-        farmersMarketList.appendChild(marketInfoDiv);
-
-
-        // marketId = marketPlaceData[i].id;
-        // getMarketDetails(marketId)
-        // console.log("market Id:", marketId)
-        // var div = document.createElement('div');
-        // div.setAttribute('class', "container col")
-        // div.textContent = data.results[i].marketname;
-        // document.body.appendChild(div)
+        singleMarketContainer.appendChild(marketInfoDiv)
+        marketInfo[i].children[1].firstElementChild.textContent = marketNameOnly;
     }
+    getMarketDetails(marketId);
 }
 
 function displayWeather(data) {
