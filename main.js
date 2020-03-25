@@ -75,5 +75,9 @@ function displayMarketDetails(id){
 function getZipCode(event){
     event.preventDefault();
     userZip = document.getElementById('zip').value;
+    if(/^\d{5}(-\d{4})?$/.test(userZip) === false){
+        alert("Please Enter Zip Code");
+        return;
+    }
     console.log("findMarket clicked:", userZip);
 }
