@@ -1,5 +1,11 @@
-.weather-icon {
-    background-image: url(http://openweathermap.org/img/wn/10d@2x.png);
+.icon-div{
+    height: 8vw;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
+.rain-10d {
+    background-image: url(http://openweathermap.org/img/wn/10d@2x.png);
+}

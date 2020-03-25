@@ -44,16 +44,18 @@ function displayWeather(data) {
     console.log("all Weather Datat:", allWeatherData);
     var weatherIcon = weatherData.icon;
     var weatherIconDiv = document.getElementById('weather');
-    var image = document.createElement('img');
-    image.setAttribute('src', "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
-    weatherIconDiv.children[0].appendChild(image);
+    // var image = document.createElement('img');
+    // image.setAttribute('src', "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
+    // weatherIconDiv.children[0].appendChild(image);
+    weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 rain-" + weatherIcon);
+    weatherIconDiv.children[0].lastElementChild.textContent = weatherData.main;
     var tempMinKelvin = allWeatherData.main.temp_min;
     var tempLowF = convertToFahrenheit(tempMinKelvin)
     var tempHighKelvin = allWeatherData.main.temp_max;
     var tempHighF = convertToFahrenheit(tempHighKelvin)
-    weatherIconDiv.children[1].firstChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
-    weatherIconDiv.children[2].firstChild.textContent = "Humidity: " + allWeatherData.main.humidity;
-    weatherIconDiv.children[3].firstChild.textContent = allWeatherData.name;
+    weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
+    weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
+    weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
 
 }
 
