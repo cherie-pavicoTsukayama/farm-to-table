@@ -8,11 +8,12 @@ var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
 
 
-function getMarketResults(userZip) {
+function getMarketResults() {
+    var zipNum = parseInt(userZip);
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zipNum,
         dataType: 'jsonp',
         success: displayMarketData,
         error: console.error
