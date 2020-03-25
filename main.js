@@ -74,6 +74,6 @@ function displayMarketDetails(id){
 
 function getZipCode(event){
     event.preventDefault();
-    var input
-    console.log("findMarket clicked")
+    userZip = document.getElementById('zip').value;
+    console.log("findMarket clicked:", userZip);
 }
