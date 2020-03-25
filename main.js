@@ -35,14 +35,24 @@ function displayMarketData(data) {
         div.textContent = data.results[i].marketname;
         document.body.appendChild(div)
     }
-    getWeather(userZip);
 }
 
 function displayWeather(data) {
     allWeatherData = data;
     weatherData = data.weather[0];
     console.log(weatherData);
-    console.log(allWeatherData);
+    console.log("all Weather Datat:", allWeatherData);
+    var weatherIcon = weatherData.icon;
+    var weatherIconDiv = document.getElementById('weather');
+    var image = document.createElement('img');
+    image.setAttribute('src', "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
+    weatherIconDiv.children[0].appendChild(image);
+    var tempMinKelvin = allWeatherData.main.temp_min;
+    var tempLowF = convertToFahrenheit(tempMinKelvin)
+    console.log(tempLowF);
+    var tempHighKelvin = allWeatherData.main.temp_max;
+    var tempHighF = convertToFahrenheit(tempHighKelvin)
+    console.log(tempHighF);
     // .weather.main;
     // var div = document.createElement('div');
     // div.textContent = data.weather.main;
@@ -80,4 +90,9 @@ function getZipCode(event){
     }
     console.log("findMarket clicked:", userZip);
     getWeather(userZip);
+}
+
+function convertToFahrenheit(kelvin){
+    return Math.round((kelvin - 273.15) * 9 / 5 + 32);
+
 }
