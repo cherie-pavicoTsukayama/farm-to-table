@@ -31,11 +31,17 @@ function getWeather(userZip) {
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
-    for (var i = 0; i < data.results.length; i++) {
-        var div = document.createElement('div');
-        div.textContent = data.results[i].marketname;
-        document.body.appendChild(div)
-    }
+    var marketId = marketPlaceData[0].id
+    console.log("displayMarketData", data.results);
+    console.log(marketId)
+    getMarketDetails(marketId)
+    // for (var i = 0; i < data.results.length; i++) {
+
+
+    //     var div = document.createElement('div');
+    //     div.textContent = data.results[i].marketname;
+    //     document.body.appendChild(div)
+    // }
 }
 
 function displayWeather(data) {
@@ -45,9 +51,6 @@ function displayWeather(data) {
     console.log("all Weather Datat:", allWeatherData);
     var weatherIcon = weatherData.icon;
     var weatherIconDiv = document.getElementById('weather');
-    // var image = document.createElement('img');
-    // image.setAttribute('src', "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png");
-    // weatherIconDiv.children[0].appendChild(image);
     weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 weather-icon-" + weatherIcon);
     weatherIconDiv.children[0].lastElementChild.textContent = weatherData.description;
     var tempMinKelvin = allWeatherData.main.temp_min;
@@ -71,16 +74,13 @@ function getMarketDetails(id){
 }
 
 
-
 function displayMarketDetails(id){
-    marketDetails = id;
-    var div = document.createElement('div');
-    div.textContent = marketDetails.marketdetails.address;
-    document.body.appendChild(div);
+    console.log(id)
+    // marketDetails = id;
+    // var div = document.createElement('div');
+    // div.textContent = marketDetails.marketdetails.address;
+    // document.body.appendChild(div);
 }
-
-// function eventListenters(){
-
 
 function getZipCode(event){
     event.preventDefault();
@@ -91,6 +91,7 @@ function getZipCode(event){
     }
     console.log("findMarket clicked:", userZip);
     getWeather(userZip);
+    getMarketResults();
 }
 
 function convertToFahrenheit(kelvin){
