@@ -4,7 +4,6 @@ body{
     width: 100%;
     background-image: url(assets/images/jumbo-header-bg.jpg);
     background-size: cover;
-    /* background-position: fixed; */
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
