@@ -31,7 +31,6 @@ function getWeather(userZip) {
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
-    console.log("displayMarketData", marketPlaceData);
 
     var marketName = null;
     var marketInfo = document.getElementsByClassName('market-info');
@@ -75,8 +74,6 @@ function displayMarketData(data) {
 function displayWeather(data) {
     allWeatherData = data;
     weatherData = data.weather[0];
-    console.log(weatherData);
-    console.log("all Weather Datat:", allWeatherData);
     var weatherIcon = weatherData.icon;
     var weatherIconDiv = document.getElementById('weather');
     weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 weather-icon-" + weatherIcon);
@@ -105,8 +102,6 @@ function getMarketDetails(id, iterationNum){
 
 function displayMarketDetails(singleMarketDetail, i){
     marketDetails = singleMarketDetail;
-    console.log(marketDetails);
-    //Select farmerMarketList div and "navigate" to the marketDetail location
     var farmersMarketList = document.getElementById('farmersMarketList');
     farmersMarketList.children[i].children[1].children[1].textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
@@ -123,7 +118,6 @@ function getZipCode(event){
         return;
     }
 
-    console.log("findMarket clicked:", userZip);
     getWeather(userZip);
     getMarketResults();
     document.querySelector('form').reset();
