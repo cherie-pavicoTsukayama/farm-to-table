@@ -42,7 +42,7 @@ function displayMarketData(data) {
         var distance = marketName.slice(0, 3);
         var farmersMarketList = document.getElementById('farmersMarketList');
         var singleMarketContainer = document.createElement('div')
-        singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-10 justify-content-center');
+        singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center');
         var distanceDiv = document.createElement('div');
         distanceDiv.setAttribute('class', 'distance d-flex justify-content-center align-content-center col-2 distance-style white accent-color pt-2 pb-2')
         var distanceText = document.createElement('h4');

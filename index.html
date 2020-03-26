@@ -13,20 +13,20 @@
 </head>
 <body>
     <main>
-        <section class="container col-sm-10 col-md-12 jumbo-header-container d-flex align-content-center justify-content-space-around flex-wrap">
-            <div class="title col-sm-7">
+        <section class="container col-sm-10 col-md-12 col-lg-10 jumbo-header-container d-flex align-content-center justify-content-space-around flex-wrap">
+            <div class="title col-sm-7 col-md-12 col-lg-7">
                 <h1 class="font-satisfy text-center">Farm to Table</h1>
                 <h4 class="text-center">Find Farmers' Markets Near You</h4>
                 <form  action="" class="d-flex flex-wrap pt-4">
                     <div class="col-12 d-flex flex-wrap justify-content-center">
-                        <input class="col-sm-4 mb-3 text-center" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="">
+                        <input class="col-sm-4 mb-3 text-center" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="96744">
                         <div class="col-12 d-flex justify-content-center p-0">
                             <button id="findMarket" class="col-sm-4 btn btn-info" type="submit">Find Market</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div id="weather" class=" col-sm-5 d-flex flex-wrap justify-content-around mt-3">
+            <div id="weather" class=" container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3">
                 <div id="weatherIcon" class="d-flex flex-wrap justify-content-center col-12 mt-3">
                     <div class="icon-div"></div>
                     <p class="white text-capitalize"></p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </section>
-        <section id="farmersMarketList" class=" mt-5 container col-xs-12 col-md-8 d-flex flex-wrap justify-content-center farmers-market-section">
+        <section id="farmersMarketList" class=" mt-5 container col-xs-12 col-md-12 d-flex  col-lg-8 flex-wrap justify-content-center farmers-market-section">
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
