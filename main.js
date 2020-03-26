@@ -31,7 +31,6 @@ function getWeather(userZip) {
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
-
     var marketName = null;
     var marketInfo = document.getElementsByClassName('market-info');
 
@@ -46,7 +45,8 @@ function displayMarketData(data) {
         singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-10');
         var distanceDiv = document.createElement('div');
         distanceDiv.setAttribute('class', 'distance d-flex justify-content-center align-content-center col-2 distance-style white accent-color pt-2 pb-2')
-        var distanceText = document.createElement('p');
+        var distanceText = document.createElement('h4');
+        distanceText.setAttribute('class', 'align-self-center m-0')
         distanceText.textContent = distance + ' mi';
         distanceDiv.appendChild(distanceText);
         var marketInfoDiv = document.createElement('div');
@@ -102,7 +102,7 @@ function getMarketDetails(id, iterationNum) {
 
 function displayMarketDetails(singleMarketDetail, i) {
     marketDetails = singleMarketDetail;
-
+    console.log(singleMarketDetail)
     var schedule = marketDetails.marketdetails.Schedule;
     var indexNum = schedule.indexOf(';')
     schedule = schedule.slice(0, indexNum);
