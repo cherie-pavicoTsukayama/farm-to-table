@@ -101,3 +101,21 @@ input {
 .weather-icon-50d, .weather-icon-50n {
     background-image: url(assets/weatherIcons/mist-50d.png);
 }
+
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    .icon-div {
+    height: 24vw;
+    }
+
+    .jumbo-header-container {
+        height: 100vh;
+    }
+}
