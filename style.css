@@ -119,3 +119,25 @@ input {
         height: 100vh;
     }
 }
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    h4 {
+        font-size: 1.25rem;
+    }
+    .icon-div {
+    height: 9vw;
+    }
+
+    .jumbo-header-container {
+        height: 100vh;
+    }
+    .col-sm-10 {
+        max-width: 100%;
+}
