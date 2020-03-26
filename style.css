@@ -1,5 +1,12 @@
 body{
     font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    width: 100%;
+    background-image: url(assets/images/jumbo-header-bg.jpg);
+    background-size: cover;
+    /* background-position: fixed; */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .border {
     border: 2px solid black;
@@ -19,7 +26,7 @@ body{
 }
 
 h1 {
-    font-size: 6vw;
+    font-size:7rem;
 }
 .icon-div{
     height: 8vw;
@@ -28,10 +35,11 @@ h1 {
     background-position: center;
     background-size: contain;
 }
-.jumbo-header {
-    height: 500px;
+.jumbo-headers {
+    height: 98vh;
+    width: 100%;
     background-image: url(assets/images/jumbo-header-bg.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -64,7 +72,9 @@ input {
 }
 
 .market-info{
-    border: 0px solid white;
+    background-color: white;
+    border: 0px
+    solid white;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     -moz-box-shadow:    3px 3px 5px 6px #ccc;
