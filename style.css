@@ -48,7 +48,7 @@ input {
 
 }
 .low-high{
-    background-image: linear-gradient(to left,  rgb(255, 136, 0),rgb(29, 172, 255));
+    background-image: linear-gradient(to right,  rgb(255, 136, 0),rgb(29, 172, 255));
     border-radius: 30px;
 }
 .humidity{
