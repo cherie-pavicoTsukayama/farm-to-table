@@ -13,7 +13,10 @@ function getMarketResults() {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch",
+        data: {
+            zip: userZip
+        },
         dataType: 'jsonp',
         success: displayMarketData,
         error: console.error
@@ -23,7 +26,11 @@ function getMarketResults() {
 function getWeather(userZip) {
     $.ajax({
         method: "GET",
-        url: "http://api.openweathermap.org/data/2.5/weather?zip=" + userZip + "&appid=762a2b6309b12de4fe77c3fb7fb27b5f",
+        url: "http://api.openweathermap.org/data/2.5/weather",
+        data: {
+            zip: userZip,
+            appid: "762a2b6309b12de4fe77c3fb7fb27b5f",
+        },
         success: displayWeather,
         error: console.error
     })
@@ -84,14 +91,16 @@ function displayWeather(data) {
     weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
     weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
-
 }
 
 function getMarketDetails(id, iterationNum) {
     $.ajax({
         method: "GET",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
         dataType: 'jsonp',
+        data: {
+            id: id,
+        },
         success: function (singleMarketDetail) {
             displayMarketDetails(singleMarketDetail, iterationNum)
         },
@@ -126,11 +135,20 @@ function getZipCode(event) {
         return;
     }
     getWeather(userZip);
+    destroyFarmersMarketList();
     getMarketResults();
     document.querySelector('form').reset();
+
 }
 
 function convertToFahrenheit(kelvin) {
     return Math.round((kelvin - 273.15) * 9 / 5 + 32);
+}
+
+function destroyFarmersMarketList(){
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    while(farmersMarketList.firstElementChild){
+        farmersMarketList.firstElementChild.remove();
+    }
 
 }
