@@ -4,6 +4,13 @@ body{
 .border {
     border: 2px solid black;
 }
+.accent-color{
+    background-color:#17a2b8;
+}
+.distance-style {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
 .font-satisfy {
     font-family: 'Satisfy', cursive;
 }
@@ -54,6 +61,15 @@ input {
 }
 .text-capitalize {
     text-transform: capitalize;
+}
+
+.market-info{
+    border: 0px solid white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
 .weather-icon-01d, .weather-icon-01n {
     background-image: url(assets/weatherIcons/clear-sky-01d.png);

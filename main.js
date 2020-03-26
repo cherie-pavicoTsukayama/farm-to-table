@@ -36,21 +36,21 @@ function displayMarketData(data) {
     var marketInfo = document.getElementsByClassName('market-info');
 
     for (var i = 0; i < marketPlaceData.length; i++) {
-        var classList = ['market-name', 'address', 'schedule', 'products']
+        var classList = ['market-name font-weight-bold', 'address', 'schedule', 'products']
         marketId = marketPlaceData[i].id;
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
         var distance = marketName.slice(0, 3);
         var farmersMarketList = document.getElementById('farmersMarketList');
         var singleMarketContainer = document.createElement('div')
-        singleMarketContainer.setAttribute('class', 'd-flex flex-wrap');
+        singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-8');
         var distanceDiv = document.createElement('div');
-        distanceDiv.setAttribute('class', 'distance d-flex justify-content-center col-2')
+        distanceDiv.setAttribute('class', 'distance d-flex justify-content-center align-content-center col-2 distance-style white accent-color pt-2 pb-2')
         var distanceText = document.createElement('p');
-        distanceText.textContent = distance;
+        distanceText.textContent = distance + ' mi';
         distanceDiv.appendChild(distanceText);
         var marketInfoDiv = document.createElement('div');
-        marketInfoDiv.setAttribute('class', 'market-info col-9');
+        marketInfoDiv.setAttribute('class', 'market-info col-9 pt-2 pb-2');
         for (var list = 0; list < classList.length; list++) {
             var marketDetailDiv = document.createElement('div');
             marketDetailDiv.setAttribute('class', classList[list]);
@@ -64,10 +64,6 @@ function displayMarketData(data) {
         marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
         getMarketDetails(marketId,i);
     }
-    // getMarketDetails(marketId);
-    // marketInfo[i].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
-    // marketInfo[i].children[2].firstElementChild.textContent = marketDetails.marketdetails.Schedule;
-    // marketInfo[i].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
 
 }
 
@@ -106,9 +102,9 @@ function getMarketDetails(id, iterationNum){
 function displayMarketDetails(singleMarketDetail, i){
     marketDetails = singleMarketDetail;
     var farmersMarketList = document.getElementById('farmersMarketList');
-    farmersMarketList.children[i].children[1].children[1].textContent = marketDetails.marketdetails.Address;
-    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
-    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Products;
+    farmersMarketList.children[i].children[1].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
+    farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = marketDetails.marketdetails.Schedule;
+    farmersMarketList.children[i].children[1].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
 
 }
 
