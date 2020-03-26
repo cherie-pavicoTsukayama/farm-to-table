@@ -1,6 +1,6 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    height: 101vh;
     width: 100%;
     background-image: url(assets/images/jumbo-header-bg.jpg);
     background-size: cover;
@@ -100,7 +100,7 @@ input {
 }
 
 .weather-icon-02d, .weather-icon-02n {
-    background-image: url(assets/weatherIcons/clear-sky-02d.png);
+    background-image: url(assets/weatherIcons/few-clouds-02d.png);
 }
 .weather-icon-03d, .weather-icon-03n {
     background-image: url(assets/weatherIcons/scattered-clouds-03d.png);

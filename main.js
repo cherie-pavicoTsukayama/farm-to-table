@@ -102,7 +102,6 @@ function getMarketDetails(id, iterationNum) {
 
 function displayMarketDetails(singleMarketDetail, i) {
     marketDetails = singleMarketDetail;
-    console.log(singleMarketDetail)
     var schedule = marketDetails.marketdetails.Schedule;
     var indexNum = schedule.indexOf(';')
     schedule = schedule.slice(0, indexNum);
@@ -111,7 +110,6 @@ function displayMarketDetails(singleMarketDetail, i) {
     } else {
         schedule = schedule.slice(0, indexNum);
     }
-    console.log(schedule);
     var farmersMarketList = document.getElementById('farmersMarketList');
     farmersMarketList.children[i].children[1].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = schedule;
