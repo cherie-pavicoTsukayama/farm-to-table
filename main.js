@@ -110,7 +110,7 @@ function displayMarketDetails(singleMarketDetail, i){
     var farmersMarketList = document.getElementById('farmersMarketList');
     farmersMarketList.children[i].children[1].children[1].textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
-    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
+    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Products;
 
 }
 
