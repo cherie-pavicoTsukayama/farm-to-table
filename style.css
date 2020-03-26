@@ -1,3 +1,16 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.font-satisfy {
+    font-family: 'Satisfy', cursive;
+}
+.white {
+    color: white;
+}
+
+h1 {
+    font-size: 6rem;
+}
 .icon-div{
     height: 8vw;
     width: 200px;
@@ -15,6 +28,16 @@
 .jumbo-header-container{
     height: 500px;
 }
+
+button {
+    border-radius: 3px;
+}
+
+input {
+    height: 3rem;
+
+}
+
 .text-capitalize {
     text-transform: capitalize;
 }

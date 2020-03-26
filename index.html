@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <title>Document</title>
 </head>
 <body>
     <main class="jumbo-header">
-        <section class="container col-10 jumbo-header-container d-flex align-content-center justify-self-center flex-wrap">
-            <div class="title col-sm-6">
-                <h1>Farmers Market Finder</h1>
-                <h2>Find Farmers Markets Near You</h2>
-                <form  action="" class="d-flex flex-wrap">
-                    <div class='col-12'>
-                        <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code">
+        <section class="container col-10 jumbo-header-container d-flex align-content-center justify-content-space-around flex-wrap">
+            <div class="title col-sm-7">
+                <h1 class="font-satisfy text-center">Farm to Table</h1>
+                <h4 class="text-center">Find Farmers Markets Near You</h4>
+                <form  action="" class="d-flex flex-wrap pt-4">
+                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                        <input class="col-sm-4 mb-3" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code">
+                        <div class="col-12 d-flex justify-content-center p-0">
+                            <button id="findMarket" class="col-sm-4 btn btn-info" type="submit">Find Market</button>
+                        </div>
                     </div>
-                    <button id="findMarket" class="col-sm-4" type="submit">Find Market</button>
                 </form>
             </div>
-            <div id="weather" class="col-sm-6 d-flex flex-wrap">
+            <div id="weather" class="col-sm-5 d-flex flex-wrap">
                 <div id="weatherIcon" class="d-flex flex-wrap justify-content-center col-12">
                     <div class="icon-div"></div>
                     <p class="text-capitalize"></p>
