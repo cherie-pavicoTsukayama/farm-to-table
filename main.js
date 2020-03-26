@@ -44,9 +44,9 @@ function displayMarketData(data) {
         var distance = marketName.slice(0, 3);
         var farmersMarketList = document.getElementById('farmersMarketList');
         var singleMarketContainer = document.createElement('div')
-        singleMarketContainer.setAttribute('class', 'd-felx');
+        singleMarketContainer.setAttribute('class', 'd-flex flex-wrap');
         var distanceDiv = document.createElement('div');
-        distanceDiv.setAttribute('class', 'distance col-3')
+        distanceDiv.setAttribute('class', 'distance d-flex justify-content-center col-2')
         var distanceText = document.createElement('p');
         distanceText.textContent = distance;
         distanceDiv.appendChild(distanceText);
@@ -62,9 +62,14 @@ function displayMarketData(data) {
         singleMarketContainer.appendChild(distanceDiv);
         farmersMarketList.appendChild(singleMarketContainer);
         singleMarketContainer.appendChild(marketInfoDiv)
-        marketInfo[i].children[1].firstElementChild.textContent = marketNameOnly;
+        marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
+        getMarketDetails(marketId,i);
     }
-    getMarketDetails(marketId);
+    // getMarketDetails(marketId);
+    // marketInfo[i].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
+    // marketInfo[i].children[2].firstElementChild.textContent = marketDetails.marketdetails.Schedule;
+    // marketInfo[i].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
+
 }
 
 function displayWeather(data) {
@@ -86,24 +91,29 @@ function displayWeather(data) {
 
 }
 
-function getMarketDetails(id){
+function getMarketDetails(id, iterationNum){
     $.ajax({
         method: "GET",
         url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
         dataType: 'jsonp',
-        success: displayMarketDetails,
+        success: function(singleMarketDetail){
+            displayMarketDetails(singleMarketDetail, iterationNum)},
         error: console.error
     })
 }
 
 
-function displayMarketDetails(singleMarketDetail){
-    console.log(singleMarketDetail)
-    // marketDetails = id;
-    // var div = document.createElement('div');
-    // div.textContent = marketDetails.marketdetails.address;
-    // document.body.appendChild(div);
+function displayMarketDetails(singleMarketDetail, i){
+    marketDetails = singleMarketDetail;
+    console.log(marketDetails);
+    //Select farmerMarketList div and "navigate" to the marketDetail location
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    farmersMarketList.children[i].children[1].children[1].textContent = marketDetails.marketdetails.Address;
+    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
+    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Products;
+
 }
+
 
 function getZipCode(event){
     event.preventDefault();
