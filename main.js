@@ -79,11 +79,14 @@ function displayWeather(data) {
     weatherIconDiv.children[0].firstElementChild.setAttribute("class", "icon-div  col-12 weather-icon-" + weatherIcon);
     weatherIconDiv.children[0].lastElementChild.textContent = weatherData.description;
     var tempMinKelvin = allWeatherData.main.temp_min;
-    var tempLowF = convertToFahrenheit(tempMinKelvin)
+    var tempLowF = convertToFahrenheit(tempMinKelvin);
     var tempHighKelvin = allWeatherData.main.temp_max;
-    var tempHighF = convertToFahrenheit(tempHighKelvin)
+    var tempHighF = convertToFahrenheit(tempHighKelvin);
+    weatherIconDiv.classList.add("weather-container");
     weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
+    weatherIconDiv.children[1].classList.add('low-high');
     weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
+    weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
 
 }

@@ -1,6 +1,9 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+.border {
+    border: 2px solid black;
+}
 .font-satisfy {
     font-family: 'Satisfy', cursive;
 }
@@ -37,7 +40,18 @@ input {
     height: 3rem;
 
 }
-
+.low-high{
+    background-image: linear-gradient(to left,  rgb(255, 136, 0),rgb(29, 172, 255));
+    border-radius: 30px;
+}
+.humidity{
+    border: 2px solid rgb(96, 197, 255);
+    border-radius: 30px;
+}
+.weather-container{
+    border-radius: 20px;
+    background-image: radial-gradient(circle,  rgb(78, 179, 238),rgb(39, 114, 158));
+}
 .text-capitalize {
     text-transform: capitalize;
 }
