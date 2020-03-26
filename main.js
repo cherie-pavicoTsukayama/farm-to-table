@@ -5,7 +5,7 @@ var allWeatherData = null;
 var marketId = null;
 var marketDetails = null;
 var findMarketButton = document.getElementById('findMarket');
-findMarketButton.addEventListener('click',getZipCode);
+findMarketButton.addEventListener('click', getZipCode);
 
 
 function getMarketResults() {
@@ -62,7 +62,7 @@ function displayMarketData(data) {
         farmersMarketList.appendChild(singleMarketContainer);
         singleMarketContainer.appendChild(marketInfoDiv)
         marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
-        getMarketDetails(marketId,i);
+        getMarketDetails(marketId, i);
     }
 
 }
@@ -87,42 +87,52 @@ function displayWeather(data) {
 
 }
 
-function getMarketDetails(id, iterationNum){
+function getMarketDetails(id, iterationNum) {
     $.ajax({
         method: "GET",
         url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
         dataType: 'jsonp',
-        success: function(singleMarketDetail){
-            displayMarketDetails(singleMarketDetail, iterationNum)},
+        success: function (singleMarketDetail) {
+            displayMarketDetails(singleMarketDetail, iterationNum)
+        },
         error: console.error
     })
 }
 
 
-function displayMarketDetails(singleMarketDetail, i){
+function displayMarketDetails(singleMarketDetail, i) {
     marketDetails = singleMarketDetail;
+
+    var schedule = marketDetails.marketdetails.Schedule;
+    var indexNum = schedule.indexOf(';')
+    schedule = schedule.slice(0, indexNum);
+    if (indexNum === -1){
+        schedule =  " ";
+    } else {
+        schedule = schedule.slice(0, indexNum);
+    }
+    console.log(schedule);
     var farmersMarketList = document.getElementById('farmersMarketList');
     farmersMarketList.children[i].children[1].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
-    farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = marketDetails.marketdetails.Schedule;
+    farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = schedule;
     farmersMarketList.children[i].children[1].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
 
 }
 
 
-function getZipCode(event){
+function getZipCode(event) {
     event.preventDefault();
     userZip = document.getElementById('zip').value;
-    if(/^\d{5}(-\d{4})?$/.test(userZip) === false){
+    if (/^\d{5}(-\d{4})?$/.test(userZip) === false) {
         alert("Please Enter Zip Code");
         return;
     }
-
     getWeather(userZip);
     getMarketResults();
     document.querySelector('form').reset();
 }
 
-function convertToFahrenheit(kelvin){
+function convertToFahrenheit(kelvin) {
     return Math.round((kelvin - 273.15) * 9 / 5 + 32);
 
 }
