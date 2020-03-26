@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class='container'>
+        <section class="jumbo-header d-flex flex-wrap">
+            <div class="title col-sm-6">
+                <h1>Farmers Market Finder</h1>
+                <h2>Find Farmers Markets Near You</h2>
+                <form  action="" class="d-flex flex-wrap">
+                    <div class='col-12'>
+                        <input id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code">
+                    </div>
+                    <button id="findMarket" class="col-sm-4" type="submit">Find Market</button>
+                </form>
+            </div>
+            <div id="weather" class="col-sm-6 d-flex flex-wrap">
+                <div id="weatherIcon" class="d-flex flex-wrap justify-content-center col-12">
+                    <div class="icon-div"></div>
+                    <p class="text-capitalize"></p>
+                </div>
+                <div class="col-xl-6">
+                    <p></p>
+                </div>
+                <div class="col-xl-6">
+                    <p></p>
+                </div>
+                <div class="col-12">
+                    <p></p>
+                </div>
+            </div>
+        </section>
+        <section id="farmersMarketList" class=" container col-8 farmers-market-section">
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
