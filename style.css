@@ -5,6 +5,16 @@
     background-position: center;
     background-size: contain;
 }
+.jumbo-header {
+    height: 500px;
+    background-image: url(assets/images/jumbo-header-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.jumbo-header-container{
+    height: 500px;
+}
 .text-capitalize {
     text-transform: capitalize;
 }
