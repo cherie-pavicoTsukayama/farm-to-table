@@ -17,6 +17,7 @@ body{
 .distance-style {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
+    animation: fade 2s 1;
 }
 .font-satisfy {
     font-family: 'Satisfy', cursive;
@@ -56,14 +57,33 @@ input {
     border-radius: 30px;
 }
 .weather-container{
+    animation: nudge 2s 1, fade 1s 1;
     border-radius: 20px;
     background-image: radial-gradient(circle,  rgb(78, 179, 238),rgb(39, 114, 158));
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+@keyframes nudge {
+    0%, 100% {
+        transform: translate(0, 10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
 }
 .text-capitalize {
     text-transform: capitalize;
 }
 
 .market-info{
+    animation: fade 2s 1;
     background-color: white;
     border: 0px
     solid white;
@@ -73,6 +93,8 @@ input {
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow:         3px 3px 10px 4px rgba(0, 0, 0, .3);
 }
+
+
 .weather-icon-01d, .weather-icon-01n {
     background-image: url(assets/weatherIcons/clear-sky-01d.png);
 }
