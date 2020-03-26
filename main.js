@@ -5,7 +5,7 @@ var allWeatherData = null;
 var marketId = null;
 var marketDetails = null;
 var findMarketButton = document.getElementById('findMarket');
-findMarketButton.addEventListener('click', getZipCode);
+findMarketButton.addEventListener('click',getZipCode);
 
 
 function getMarketResults() {
@@ -110,7 +110,7 @@ function displayMarketDetails(singleMarketDetail, i){
     var farmersMarketList = document.getElementById('farmersMarketList');
     farmersMarketList.children[i].children[1].children[1].textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
-    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Products;
+    farmersMarketList.children[i].children[1].children[2].textContent = marketDetails.marketdetails.Schedule;
 
 }
 
@@ -122,9 +122,11 @@ function getZipCode(event){
         alert("Please Enter Zip Code");
         return;
     }
+
     console.log("findMarket clicked:", userZip);
     getWeather(userZip);
     getMarketResults();
+    document.querySelector('form').reset();
 }
 
 function convertToFahrenheit(kelvin){
