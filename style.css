@@ -1,3 +1,33 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    height: 101vh;
+    width: 100%;
+    background-image: url(assets/images/jumbo-header-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.border {
+    border: 2px solid black;
+}
+.accent-color{
+    background-color:#17a2b8;
+}
+.distance-style {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    animation: fade 2s 1;
+}
+.font-satisfy {
+    font-family: 'Satisfy', cursive;
+}
+.white {
+    color: white;
+}
+
+h1 {
+    font-size:7rem;
+}
 .icon-div{
     height: 8vw;
     width: 200px;
@@ -5,15 +35,71 @@
     background-position: center;
     background-size: contain;
 }
+.jumbo-header-container{
+    height: 500px;
+}
+
+button {
+    border-radius: 3px;
+}
+
+input {
+    height: 3rem;
+
+}
+.low-high{
+    background-image: linear-gradient(to right,  rgb(255, 136, 0),rgb(29, 172, 255));
+    border-radius: 30px;
+}
+.humidity{
+    border: 2px solid rgb(96, 197, 255);
+    border-radius: 30px;
+}
+.weather-container{
+    animation: nudge 2s 1, fade 1s 1;
+    border-radius: 20px;
+    background-image: radial-gradient(circle,  rgb(78, 179, 238),rgb(39, 114, 158));
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+@keyframes nudge {
+    0%, 100% {
+        transform: translate(0, 10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
 .text-capitalize {
     text-transform: capitalize;
 }
+
+.market-info{
+    animation: fade 2s 1;
+    background-color: white;
+    border: 0px
+    solid white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 10px 4px rgba(0, 0, 0, .3);
+}
+
+
 .weather-icon-01d, .weather-icon-01n {
     background-image: url(assets/weatherIcons/clear-sky-01d.png);
 }
 
 .weather-icon-02d, .weather-icon-02n {
-    background-image: url(assets/weatherIcons/clear-sky-02d.png);
+    background-image: url(assets/weatherIcons/few-clouds-02d.png);
 }
 .weather-icon-03d, .weather-icon-03n {
     background-image: url(assets/weatherIcons/scattered-clouds-03d.png);
@@ -35,4 +121,55 @@
 }
 .weather-icon-50d, .weather-icon-50n {
     background-image: url(assets/weatherIcons/mist-50d.png);
+}
+
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    .icon-div {
+    height: 24vw;
+    }
+
+    .jumbo-header-container {
+        height: 100vh;
+    }
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    h4 {
+        font-size: 1.25rem;
+    }
+    .icon-div {
+    height: 9vw;
+    }
+
+    .jumbo-header-container {
+        height: 100vh;
+    }
+    .col-sm-10 {
+        max-width: 100%;
+    }
+}
+
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .jumbo-header-container {
+        height: 72vh;
+    }
 }
