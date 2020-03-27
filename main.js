@@ -13,7 +13,10 @@ function getMarketResults() {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch",
+        data: {
+            zip: userZip
+        },
         dataType: 'jsonp',
         success: displayMarketData,
         error: console.error
@@ -23,7 +26,11 @@ function getMarketResults() {
 function getWeather(userZip) {
     $.ajax({
         method: "GET",
-        url: "http://api.openweathermap.org/data/2.5/weather?zip=" + userZip + "&appid=762a2b6309b12de4fe77c3fb7fb27b5f",
+        url: "http://api.openweathermap.org/data/2.5/weather",
+        data: {
+            zip: userZip,
+            appid: "762a2b6309b12de4fe77c3fb7fb27b5f",
+        },
         success: displayWeather,
         error: console.error
     })
@@ -68,6 +75,7 @@ function displayMarketData(data) {
 }
 
 function displayWeather(data) {
+    makeWeatherSection();
     allWeatherData = data;
     weatherData = data.weather[0];
     var weatherIcon = weatherData.icon;
@@ -79,19 +87,77 @@ function displayWeather(data) {
     var tempHighKelvin = allWeatherData.main.temp_max;
     var tempHighF = convertToFahrenheit(tempHighKelvin);
     weatherIconDiv.classList.add("weather-container");
-    weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
+    weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low " + tempLowF;
     weatherIconDiv.children[1].classList.add('low-high');
     weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
     weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
+}
+function makeWeatherContainer(){
+    var weatherContainer = document.createElement("div");
+    weatherContainer.setAttribute('id', 'weather');
+    weatherContainer.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3");
+    return weatherContainer;
+}
+function makeWeatherSection() {
+    var weatherSection = document.createElement("div");
+    weatherSection.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3")
+
+    var checkWeatherContainer = document.getElementById('weather')
+
+    var weatherContainer = null;
+    if (!checkWeatherContainer) {
+        weatherContainer = makeWeatherContainer();
+    } else {
+        destroyWeatherContainer(checkWeatherContainer);
+        weatherContainer = makeWeatherContainer();
+    }
+
+
+    var weatherIconContainer = document.createElement('div');
+    weatherIconContainer.setAttribute('id', 'weatherIcon');
+    weatherIconContainer.setAttribute('class', "d-flex flex-wrap justify-content-center col-12 mt-3");
+    var weatherIcon = document.createElement('div');
+    weatherIcon.setAttribute("class", "icon-div")
+    var weatherIconDescription = document.createElement('div');
+    weatherIconDescription.setAttribute('class', "white text-capitalize");
+    weatherIconContainer.appendChild(weatherIcon);
+    weatherIconContainer.appendChild(weatherIconDescription);
+    weatherContainer.appendChild(weatherIconContainer);
+    weatherSection.appendChild(weatherContainer);
+
+    for (var i = 0; i < 2; i++){
+        var temperatureContainer = document.createElement('div')
+        temperatureContainer.setAttribute('class', "col-xl-5 font-weight-bold white d-flex justify-content-center pt-3 pb-3");
+        var textInTempContainer = document.createElement('p');
+        textInTempContainer.setAttribute("class", "align-self-center m-0")
+        temperatureContainer.appendChild(textInTempContainer);
+        weatherContainer.appendChild(temperatureContainer);
+    }
+
+    var locationContainer = document.createElement('div');
+    locationContainer.setAttribute('class', 'col-12 text-center');
+    var location = document.createElement('h2');
+    location.setAttribute('class', 'mt-3 mb-3 white');
+
+    locationContainer.appendChild(location);
+
+    weatherContainer.appendChild(locationContainer);
+
+    var section = document.querySelector('section');
+    section.appendChild(weatherContainer);
+
 
 }
 
 function getMarketDetails(id, iterationNum) {
     $.ajax({
         method: "GET",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
         dataType: 'jsonp',
+        data: {
+            id: id,
+        },
         success: function (singleMarketDetail) {
             displayMarketDetails(singleMarketDetail, iterationNum)
         },
@@ -126,11 +192,22 @@ function getZipCode(event) {
         return;
     }
     getWeather(userZip);
+    destroyFarmersMarketList();
     getMarketResults();
     document.querySelector('form').reset();
 }
 
 function convertToFahrenheit(kelvin) {
     return Math.round((kelvin - 273.15) * 9 / 5 + 32);
+}
 
+function destroyFarmersMarketList(){
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    while(farmersMarketList.firstElementChild){
+        farmersMarketList.firstElementChild.remove();
+    }
+}
+
+function destroyWeatherContainer(element){
+    element.remove();
 }
