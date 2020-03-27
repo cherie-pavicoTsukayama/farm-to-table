@@ -75,7 +75,7 @@ function displayMarketData(data) {
 }
 
 function displayWeather(data) {
-    makeWeatherContainers();
+    makeWeatherSection();
     allWeatherData = data;
     weatherData = data.weather[0];
     var weatherIcon = weatherData.icon;
@@ -93,10 +93,27 @@ function displayWeather(data) {
     weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
 }
-function makeWeatherContainers() {
+function makeWeatherContainer(){
     var weatherContainer = document.createElement("div");
     weatherContainer.setAttribute('id', 'weather');
     weatherContainer.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3");
+    return weatherContainer;
+}
+function makeWeatherSection() {
+    var weatherSection = document.createElement("div");
+    weatherSection.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3")
+
+    var checkWeatherContainer = document.getElementById('weather')
+    console.log("check weather container:", checkWeatherContainer);
+
+    var weatherContainer = null;
+    if (!checkWeatherContainer) {
+        weatherContainer = makeWeatherContainer();
+    } else {
+        destroyWeatherContainer(checkWeatherContainer);
+        weatherContainer = makeWeatherContainer();
+    }
+
 
     var weatherIconContainer = document.createElement('div');
     weatherIconContainer.setAttribute('id', 'weatherIcon');
@@ -107,8 +124,8 @@ function makeWeatherContainers() {
     weatherIconDescription.setAttribute('class', "white text-capitalize");
     weatherIconContainer.appendChild(weatherIcon);
     weatherIconContainer.appendChild(weatherIconDescription);
-
     weatherContainer.appendChild(weatherIconContainer);
+    weatherSection.appendChild(weatherContainer);
 
     for (var i = 0; i < 2; i++){
         var temperatureContainer = document.createElement('div')
@@ -179,7 +196,6 @@ function getZipCode(event) {
     destroyFarmersMarketList();
     getMarketResults();
     document.querySelector('form').reset();
-
 }
 
 function convertToFahrenheit(kelvin) {
@@ -191,5 +207,8 @@ function destroyFarmersMarketList(){
     while(farmersMarketList.firstElementChild){
         farmersMarketList.firstElementChild.remove();
     }
+}
 
+function destroyWeatherContainer(element){
+    element.remove();
 }
