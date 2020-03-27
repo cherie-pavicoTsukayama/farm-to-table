@@ -87,7 +87,7 @@ function displayWeather(data) {
     var tempHighKelvin = allWeatherData.main.temp_max;
     var tempHighF = convertToFahrenheit(tempHighKelvin);
     weatherIconDiv.classList.add("weather-container");
-    weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low" + tempLowF;
+    weatherIconDiv.children[1].firstElementChild.textContent = "High " + tempHighF + "/" + "Low " + tempLowF;
     weatherIconDiv.children[1].classList.add('low-high');
     weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
     weatherIconDiv.children[2].classList.add("humidity");
@@ -104,7 +104,6 @@ function makeWeatherSection() {
     weatherSection.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3")
 
     var checkWeatherContainer = document.getElementById('weather')
-    console.log("check weather container:", checkWeatherContainer);
 
     var weatherContainer = null;
     if (!checkWeatherContainer) {
