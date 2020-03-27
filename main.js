@@ -75,6 +75,7 @@ function displayMarketData(data) {
 }
 
 function displayWeather(data) {
+    makeWeatherContainers();
     allWeatherData = data;
     weatherData = data.weather[0];
     var weatherIcon = weatherData.icon;
@@ -91,6 +92,46 @@ function displayWeather(data) {
     weatherIconDiv.children[2].firstElementChild.textContent = "Humidity: " + allWeatherData.main.humidity;
     weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
+}
+function makeWeatherContainers() {
+    var weatherContainer = document.createElement("div");
+    weatherContainer.setAttribute('id', 'weather');
+    weatherContainer.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3");
+
+    var weatherIconContainer = document.createElement('div');
+    weatherIconContainer.setAttribute('id', 'weatherIcon');
+    weatherIconContainer.setAttribute('class', "d-flex flex-wrap justify-content-center col-12 mt-3");
+    var weatherIcon = document.createElement('div');
+    weatherIcon.setAttribute("class", "icon-div")
+    var weatherIconDescription = document.createElement('div');
+    weatherIconDescription.setAttribute('class', "white text-capitalize");
+    weatherIconContainer.appendChild(weatherIcon);
+    weatherIconContainer.appendChild(weatherIconDescription);
+
+    weatherContainer.appendChild(weatherIconContainer);
+
+    for (var i = 0; i < 2; i++){
+        var temperatureContainer = document.createElement('div')
+        temperatureContainer.setAttribute('class', "col-xl-5 font-weight-bold white d-flex justify-content-center pt-3 pb-3");
+        var textInTempContainer = document.createElement('p');
+        textInTempContainer.setAttribute("class", "align-self-center m-0")
+        temperatureContainer.appendChild(textInTempContainer);
+        weatherContainer.appendChild(temperatureContainer);
+    }
+
+    var locationContainer = document.createElement('div');
+    locationContainer.setAttribute('class', 'col-12 text-center');
+    var location = document.createElement('h2');
+    location.setAttribute('class', 'mt-3 mb-3 white');
+
+    locationContainer.appendChild(location);
+
+    weatherContainer.appendChild(locationContainer);
+
+    var section = document.querySelector('section');
+    section.appendChild(weatherContainer);
+
+
 }
 
 function getMarketDetails(id, iterationNum) {
