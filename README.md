@@ -20,9 +20,8 @@ Coming Soon!
 
 ## Features
 1. User inputs zipcode
-2. Weather for that zipcode is dynamically created with the data received from the openWeatherMap API.
-3. Farmers markets near the zipcode is listed below the weather showing details about each farmers market.
+2. Weather for that zip code is dynamically created with the data received from the openWeatherMap API.
+3. Farmers markets near the zip code is listed below the weather showing details about each farmers market.
 
 ## Preview
 <img src="assets/images/farm-to-table.gif">
-
