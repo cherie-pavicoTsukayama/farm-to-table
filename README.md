@@ -1,19 +1,28 @@
-# C220-Hackathon-2
+# Farm To Table
+> - Maintained by: `cherie-pavicoTsukayama`
 
-For this Hackathon, you will be combining multiple public APIs of your choosing in order to create a web application that uses their combined data to create something new. The application is yours to design, but your idea must be approved by an instructor before you can move forward with building the application.
+## Description
+A mobile responsive web application for users who want to find farmers markets near them and know the current weather.
 
-### Requirements
-- Combine **at least** 2 public APIs via AJAX requests and present their combined information in a web application of your design.
-- Must be issue-managed via [Meistertask](https://www.meistertask.com/) or an equivalent Kanban board.
-- Application idea **MUST** be approved by an instructor before you begin coding your project.
+## Live Demo
+Coming Soon!
 
+## Technologies Used
+ - HTML
+ - CSS
+ - JavaScript
+ - JQuery
+ - ajax
+ - openWeatherMap API
+   -- https://openweathermap.org/current
+ - Farmers Market API
+  -- https://search.ams.usda.gov/farmersmarkets/v1/svcdesc.html
 
-### Approved API List
+## Features
+1. User inputs zipcode
+2. Weather for that zipcode is dynamically created with the data received from the openWeatherMap API.
+3. Farmers markets near the zipcode is listed below the weather showing details about each farmers market.
 
-Found [**here**](https://docs.google.com/document/d/10CMIYVWv36gophaq_3DldBoAT4w6g4xL9xEMnEu-z5o/edit?usp=sharing)
+## Preview
+<img src="assets/images/farm-to-table.gif">
 
-### ProgrammableWeb API Directory
-
-Found [**here**](https://www.programmableweb.com/apis/directory)
-
-**NOTE:** Any APIs found through this link not on the approved API list above must be approved by an instructor to be used. In order to be approved, you must be able to provide proof of a successful AJAX call in the browser **WITHOUT** using VSCode's Live Server.
