@@ -19,7 +19,7 @@ Coming Soon!
   -- https://search.ams.usda.gov/farmersmarkets/v1/svcdesc.html
 
 ## Features
-1. User inputs zip code
+1. User inputs zip code.
 2. Weather for that zip code is dynamically created with the data received from the openWeatherMap API.
 3. Farmers markets near the zip code is listed below the weather showing details about each farmers market.
 
