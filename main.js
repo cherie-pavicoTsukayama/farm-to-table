@@ -32,8 +32,34 @@ function getWeather(userZip) {
             appid: "762a2b6309b12de4fe77c3fb7fb27b5f",
         },
         success: displayWeather,
-        error: console.error
+        error: errorHandelingWeather
     })
+}
+
+function makeErrorWeatherSection() {
+    var weatherSection = document.createElement("div");
+    weatherSection.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3")
+    var checkWeatherContainer = document.getElementById('weather')
+    var weatherContainer = null;
+    if (!checkWeatherContainer) {
+        weatherContainer = makeWeatherContainer();
+    } else {
+        destroyWeatherContainer(checkWeatherContainer);
+        weatherContainer = makeWeatherContainer();
+    }
+    weatherSection.appendChild(weatherContainer);
+    var section = document.querySelector('section');
+    section.appendChild(weatherContainer);
+}
+
+function errorHandelingWeather() {
+    makeErrorWeatherSection()
+    var weatherContainer = document.getElementById('weather');
+    weatherContainer.classList.add('weather-container');
+    var weatherErrorMessage = document.createElement('p');
+    weatherErrorMessage.setAttribute('class', 'white text-center align-self-center col-sm-9')
+    weatherErrorMessage.textContent = 'Weather could not be retrieved. Please try again.'
+    weatherContainer.appendChild(weatherErrorMessage);
 }
 
 function errorHandelingFarmersMarket(){
@@ -111,12 +137,14 @@ function displayWeather(data) {
     weatherIconDiv.children[2].classList.add("humidity");
     weatherIconDiv.children[3].firstElementChild.textContent = allWeatherData.name;
 }
+
 function makeWeatherContainer(){
     var weatherContainer = document.createElement("div");
     weatherContainer.setAttribute('id', 'weather');
     weatherContainer.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3");
     return weatherContainer;
 }
+
 function makeWeatherSection() {
     var weatherSection = document.createElement("div");
     weatherSection.setAttribute('class', "container col-sm-5 col-md-8 col-lg-5 d-flex flex-wrap justify-content-around mt-3")
@@ -164,8 +192,6 @@ function makeWeatherSection() {
 
     var section = document.querySelector('section');
     section.appendChild(weatherContainer);
-
-
 }
 
 function getMarketDetails(id, iterationNum) {
