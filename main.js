@@ -19,7 +19,7 @@ function getMarketResults() {
         },
         dataType: 'jsonp',
         success: displayMarketData,
-        error: console.error
+        error: errorHandelingFarmersMarket
     });
 }
 
@@ -43,7 +43,11 @@ function errorHandelingFarmersMarket(){
     var errorMessage = document.createElement('div');
     errorMessage.setAttribute('class', 'error-message-div col-9 pt-2 pb-2');
     var errorParagraph = document.createElement('p');
-
+    errorParagraph.setAttribute('class', 'text-center m-0')
+    errorParagraph.textContent = 'Farmer\'s Martkets could not be retrieved. Please try again.'
+    errorMessage.appendChild(errorParagraph);
+    errorMessageContainer.appendChild(errorMessage);
+    farmersMarketList.appendChild(errorMessageContainer);
 }
 
 function displayMarketData(data) {
