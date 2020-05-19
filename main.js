@@ -197,7 +197,7 @@ function makeWeatherSection() {
 function getMarketDetails(id, iterationNum) {
     $.ajax({
         method: "GET",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
+        url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
         dataType: 'jsonp',
         data: {
             id: id,
