@@ -36,18 +36,23 @@ function getWeather(userZip) {
     })
 }
 
+
 function displayMarketData(data) {
     marketPlaceData = data.results;
     var marketName = null;
     var marketInfo = document.getElementsByClassName('market-info');
-
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    if(marketPlaceData.length === 0) {
+        var loader = document.createElement('img');
+        loader.setAttribute('src', 'assets/images/Rolling-1s-200px (1).gif')
+        farmersMarketList.appendChild(loader);
+    }
     for (var i = 0; i < marketPlaceData.length; i++) {
         var classList = ['market-name font-weight-bold', 'address', 'schedule', 'products']
         marketId = marketPlaceData[i].id;
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
         var distance = marketName.slice(0, 3);
-        var farmersMarketList = document.getElementById('farmersMarketList');
         var singleMarketContainer = document.createElement('div')
         singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center');
         var distanceDiv = document.createElement('div');
