@@ -93,6 +93,15 @@ input {
     box-shadow:         3px 3px 10px 4px rgba(0, 0, 0, .3);
 }
 
+.error-message-div{
+    animation: fade 2s 1;
+    background-color: white;
+    border: 0px solid white;
+    border-radius: 30px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 10px 4px rgba(0, 0, 0, .3);
+}
 
 .weather-icon-01d, .weather-icon-01n {
     background-image: url(assets/weatherIcons/clear-sky-01d.png);

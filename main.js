@@ -36,6 +36,15 @@ function getWeather(userZip) {
     })
 }
 
+function errorHandelingFarmersMarket(){
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    var errorMessageContainer = document.createElement('div');
+    errorMessageContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center')
+    var errorMessage = document.createElement('div');
+    errorMessage.setAttribute('class', 'error-message-div col-9 pt-2 pb-2');
+    var errorParagraph = document.createElement('p');
+
+}
 
 function displayMarketData(data) {
     marketPlaceData = data.results;
