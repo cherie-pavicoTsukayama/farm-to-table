@@ -26,7 +26,7 @@ function getMarketResults() {
 function getWeather(userZip) {
     $.ajax({
         method: "GET",
-        url: "http://api.openweathermap.org/data/2.5/weathe",
+        url: "http://api.openweathermap.org/data/2.5/weather",
         data: {
             zip: userZip,
             appid: "762a2b6309b12de4fe77c3fb7fb27b5f",
