@@ -5,7 +5,7 @@
 A mobile responsive web application for users who want to find farmers markets near them and know the current weather.
 
 ## Live Demo
-Coming Soon!
+https://farm-to-table.cheriepavico.com/
 
 ## Technologies Used
  - HTML
