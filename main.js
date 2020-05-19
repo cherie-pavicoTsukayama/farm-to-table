@@ -13,7 +13,7 @@ function getMarketResults() {
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch",
+        url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch",
         data: {
             zip: userZip
         },
@@ -26,7 +26,7 @@ function getMarketResults() {
 function getWeather(userZip) {
     $.ajax({
         method: "GET",
-        url: "http://api.openweathermap.org/data/2.5/weather",
+        url: "https://api.openweathermap.org/data/2.5/weather",
         data: {
             zip: userZip,
             appid: "762a2b6309b12de4fe77c3fb7fb27b5f",
