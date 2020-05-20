@@ -92,6 +92,9 @@ function displayMarketData(data) {
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
         var distance = marketName.slice(0, 3);
+        if(distance[2] === '.') {
+            distance = distance.slice(0, 2);
+        }
         var singleMarketContainer = document.createElement('div')
         singleMarketContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center');
         var distanceDiv = document.createElement('div');
