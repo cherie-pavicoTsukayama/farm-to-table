@@ -241,7 +241,6 @@ function getZipCode(event) {
     getWeather(userZip);
     destroyFarmersMarketList();
     getMarketResults();
-    document.querySelector('form').reset();
 }
 
 function convertToFahrenheit(kelvin) {
