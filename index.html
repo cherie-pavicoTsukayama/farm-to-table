@@ -12,6 +12,15 @@
     <title>Farm to Table</title>
 </head>
 <body>
+    <div id="zipCodeModal" class="hidden">
+        <div class="modal-container d-flex justify-content-center align-items-center ">
+            <div class="popup-background d-flex flex-wrap justify-content-center pt-4 pb-4 hidden">
+                <p class="text-center col-12 ">Please enter a valid zip code.</p>
+                <button id="closeZipCodeModalButton" class="btn btn-primary align-self-center pl-5 pr-5">Ok</button>
+            </div>
+        </div>
+    </div>
+
     <main>
         <section id="hero" class="container col-sm-10 col-md-12 col-lg-10 jumbo-header-container d-flex align-content-center justify-content-center flex-wrap">
             <div class="title col-sm-7 col-md-12 col-lg-7">
@@ -19,7 +28,10 @@
                 <h4 class="text-center">Find Farmers' Markets Near You</h4>
                 <form  action="" class="d-flex flex-wrap pt-4">
                     <div class="col-12 d-flex flex-wrap justify-content-center">
-                        <input class="col-sm-4 mb-3 text-center" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="">
+                        <input required class="col-sm-4 mb-2 text-center" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Zip Code" value="">
+                        <div class="col-12 text-center">
+                            <p id="zipCodeError" class="m-0 mb-2"></p>
+                        </div>
                         <div class="col-12 d-flex justify-content-center p-0">
                             <button id="findMarket" class="col-sm-4 btn btn-info" type="submit">Find Market</button>
                         </div>
