@@ -6,6 +6,8 @@ var marketId = null;
 var marketDetails = null;
 var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
+var closeZipCodeModalButton = document.getElementById('closeZipCodeModalButton');
+closeZipCodeModalButton.addEventListener('click', closeZipCodeModal);
 
 
 function getMarketResults() {
@@ -245,8 +247,8 @@ function getZipCode(event) {
     console.log(userZip);
     if (/^\d{5}(-\d{4})?$/.test(userZip) === false) {
         // alert("Please Enter Zip Code");
-        var zipCodeModal = document.getElementById('zipCodeModal')
-        zipCodeModal.classList.remove('hidden')
+        var zipCodeModal = document.getElementById('zipCodeModal');
+        zipCodeModal.classList.remove('hidden');
         return;
     }
     getWeather(userZip);
@@ -267,4 +269,10 @@ function destroyFarmersMarketList(){
 
 function destroyWeatherContainer(element){
     element.remove();
+}
+
+function closeZipCodeModal() {
+    var zipCodeModal = document.getElementById('zipCodeModal');
+    zipCodeModal.classList.add('hidden');
+
 }
