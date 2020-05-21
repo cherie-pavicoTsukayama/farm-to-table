@@ -115,8 +115,12 @@ function displayMarketData(data) {
         singleMarketContainer.appendChild(distanceDiv);
         farmersMarketList.appendChild(singleMarketContainer);
         singleMarketContainer.appendChild(marketInfoDiv)
-        marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
-        getMarketDetails(marketId, i);
+        var googleMapLocation = document.createElement('a')
+        // googleMapLocation.setAttribute('href', )
+        marketInfo[i].children[0].firstElementChild.appendChild(googleMapLocation)
+
+        // marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
+        getMarketDetails(marketId, i, marketNameOnly);
     }
 
 }
@@ -197,7 +201,7 @@ function makeWeatherSection() {
     section.appendChild(weatherContainer);
 }
 
-function getMarketDetails(id, iterationNum) {
+function getMarketDetails(id, iterationNum, marketName) {
     $.ajax({
         method: "GET",
         url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
@@ -206,14 +210,15 @@ function getMarketDetails(id, iterationNum) {
             id: id,
         },
         success: function (singleMarketDetail) {
-            displayMarketDetails(singleMarketDetail, iterationNum)
+            displayMarketDetails(singleMarketDetail, iterationNum, marketName)
         },
         error: console.error
     })
 }
 
 
-function displayMarketDetails(singleMarketDetail, i) {
+function displayMarketDetails(singleMarketDetail, i, marketName) {
+    console.log(marketName);
     var GoogleLink = singleMarketDetail.marketdetails.GoogleLink.split('%22');
     console.log(GoogleLink.join(''));
     marketDetails = singleMarketDetail;
@@ -226,6 +231,11 @@ function displayMarketDetails(singleMarketDetail, i) {
         schedule = schedule.slice(0, indexNum);
     }
     var farmersMarketList = document.getElementById('farmersMarketList');
+    var marketNameLink = farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild;
+    marketNameLink.setAttribute('href', GoogleLink);
+    marketNameLink.setAttribute('target', '_blank');
+    farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild.textContent = marketName;
+
     farmersMarketList.children[i].children[1].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = schedule;
     farmersMarketList.children[i].children[1].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
