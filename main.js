@@ -87,7 +87,7 @@ function displayMarketData(data) {
         farmersMarketList.appendChild(loader);
     }
     for (var i = 0; i < marketPlaceData.length; i++) {
-        var classList = ['market-name font-weight-bold', 'address', 'schedule', 'products']
+        var classList = ['market-name font-weight-bold mt-3', 'address', 'schedule', 'products']
         marketId = marketPlaceData[i].id;
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
@@ -116,10 +116,7 @@ function displayMarketData(data) {
         farmersMarketList.appendChild(singleMarketContainer);
         singleMarketContainer.appendChild(marketInfoDiv)
         var googleMapLocation = document.createElement('a')
-        // googleMapLocation.setAttribute('href', )
         marketInfo[i].children[0].firstElementChild.appendChild(googleMapLocation)
-
-        // marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
         getMarketDetails(marketId, i, marketNameOnly);
     }
 
@@ -218,9 +215,8 @@ function getMarketDetails(id, iterationNum, marketName) {
 
 
 function displayMarketDetails(singleMarketDetail, i, marketName) {
-    console.log(marketName);
-    var GoogleLink = singleMarketDetail.marketdetails.GoogleLink.split('%22');
-    console.log(GoogleLink.join(''));
+    var googleLinkToModify = singleMarketDetail.marketdetails.GoogleLink.split('%22');
+    var openToGoogleMapsLink = googleLinkToModify.join('');
     marketDetails = singleMarketDetail;
     var schedule = marketDetails.marketdetails.Schedule;
     var indexNum = schedule.indexOf(';')
@@ -232,7 +228,7 @@ function displayMarketDetails(singleMarketDetail, i, marketName) {
     }
     var farmersMarketList = document.getElementById('farmersMarketList');
     var marketNameLink = farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild;
-    marketNameLink.setAttribute('href', GoogleLink);
+    marketNameLink.setAttribute('href', openToGoogleMapsLink);
     marketNameLink.setAttribute('target', '_blank');
     farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild.textContent = marketName;
 
