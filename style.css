@@ -23,6 +23,10 @@ body{
     box-shadow: 1px 1px 5px #000;
 }
 
+.hidden {
+    display: none;
+}
+
 .border {
     border: 2px solid black;
 }

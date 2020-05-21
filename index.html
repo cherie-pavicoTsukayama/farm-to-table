@@ -12,12 +12,15 @@
     <title>Farm to Table</title>
 </head>
 <body>
-    <div class="modal-container d-flex justify-content-center align-items-center">
-        <div class="popup-background d-flex flex-wrap justify-content-center pt-4 pb-4">
-            <p class="text-center col-12 ">Please enter a valid zip code.</p>
-            <button id="closeZipCodeModal" class="btn btn-primary align-self-center pl-5 pr-5">Ok</button>
+    <div id="zipCodeModal" class="hidden">
+        <div class="modal-container d-flex justify-content-center align-items-center ">
+            <div class="popup-background d-flex flex-wrap justify-content-center pt-4 pb-4 hidden">
+                <p class="text-center col-12 ">Please enter a valid zip code.</p>
+                <button id="closeZipCodeModal" class="btn btn-primary align-self-center pl-5 pr-5">Ok</button>
+            </div>
         </div>
     </div>
+
     <main>
         <section id="hero" class="container col-sm-10 col-md-12 col-lg-10 jumbo-header-container d-flex align-content-center justify-content-center flex-wrap">
             <div class="title col-sm-7 col-md-12 col-lg-7">
