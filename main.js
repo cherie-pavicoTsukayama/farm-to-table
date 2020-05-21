@@ -87,7 +87,7 @@ function displayMarketData(data) {
         farmersMarketList.appendChild(loader);
     }
     for (var i = 0; i < marketPlaceData.length; i++) {
-        var classList = ['market-name font-weight-bold', 'address', 'schedule', 'products']
+        var classList = ['market-name font-weight-bold mt-3', 'address', 'schedule', 'products']
         marketId = marketPlaceData[i].id;
         marketName = marketPlaceData[i].marketname;
         var marketNameOnly = marketName.slice(4);
@@ -115,8 +115,9 @@ function displayMarketData(data) {
         singleMarketContainer.appendChild(distanceDiv);
         farmersMarketList.appendChild(singleMarketContainer);
         singleMarketContainer.appendChild(marketInfoDiv)
-        marketInfo[i].children[0].firstElementChild.textContent = marketNameOnly;
-        getMarketDetails(marketId, i);
+        var googleMapLocation = document.createElement('a')
+        marketInfo[i].children[0].firstElementChild.appendChild(googleMapLocation)
+        getMarketDetails(marketId, i, marketNameOnly);
     }
 
 }
@@ -197,7 +198,7 @@ function makeWeatherSection() {
     section.appendChild(weatherContainer);
 }
 
-function getMarketDetails(id, iterationNum) {
+function getMarketDetails(id, iterationNum, marketName) {
     $.ajax({
         method: "GET",
         url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail",
@@ -206,14 +207,16 @@ function getMarketDetails(id, iterationNum) {
             id: id,
         },
         success: function (singleMarketDetail) {
-            displayMarketDetails(singleMarketDetail, iterationNum)
+            displayMarketDetails(singleMarketDetail, iterationNum, marketName)
         },
         error: console.error
     })
 }
 
 
-function displayMarketDetails(singleMarketDetail, i) {
+function displayMarketDetails(singleMarketDetail, i, marketName) {
+    var googleLinkToModify = singleMarketDetail.marketdetails.GoogleLink.split('%22');
+    var openToGoogleMapsLink = googleLinkToModify.join('');
     marketDetails = singleMarketDetail;
     var schedule = marketDetails.marketdetails.Schedule;
     var indexNum = schedule.indexOf(';')
@@ -224,6 +227,11 @@ function displayMarketDetails(singleMarketDetail, i) {
         schedule = schedule.slice(0, indexNum);
     }
     var farmersMarketList = document.getElementById('farmersMarketList');
+    var marketNameLink = farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild;
+    marketNameLink.setAttribute('href', openToGoogleMapsLink);
+    marketNameLink.setAttribute('target', '_blank');
+    farmersMarketList.children[i].children[1].children[0].children[0].firstElementChild.textContent = marketName;
+
     farmersMarketList.children[i].children[1].children[1].firstElementChild.textContent = marketDetails.marketdetails.Address;
     farmersMarketList.children[i].children[1].children[2].firstElementChild.textContent = schedule;
     farmersMarketList.children[i].children[1].children[3].firstElementChild.textContent = marketDetails.marketdetails.Products;
