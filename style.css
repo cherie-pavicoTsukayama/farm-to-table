@@ -7,6 +7,22 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
+.modal-container {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .7);
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+.popup-background {
+    width: 30%;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 1px 1px 5px #000;
+}
+
 .border {
     border: 2px solid black;
 }
@@ -155,6 +171,9 @@ input {
     .jumbo-header-container {
         height: 100vh;
     }
+    .popup-background{
+        width: 70%;
+    }
 }
 
 @media only screen
@@ -177,6 +196,9 @@ input {
     }
     .col-sm-10 {
         max-width: 100%;
+    }
+    .popup-background{
+        width: 50%;
     }
 }
 

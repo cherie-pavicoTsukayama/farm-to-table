@@ -242,9 +242,15 @@ function displayMarketDetails(singleMarketDetail, i, marketName) {
 function getZipCode(event) {
     event.preventDefault();
     userZip = document.getElementById('zip').value;
+    console.log(userZip);
+    if(userZip === '') {
+        var zipCodeEmpty = document.getElementById('zipCodeError')
+        console.log(zipCodeEmpty);
+
+    }
     if (/^\d{5}(-\d{4})?$/.test(userZip) === false) {
         // alert("Please Enter Zip Code");
-        
+        var zipCodeEmpty = document.getElementById('zipCodeError')
         return;
     }
     getWeather(userZip);
