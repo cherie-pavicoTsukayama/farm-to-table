@@ -214,6 +214,8 @@ function getMarketDetails(id, iterationNum) {
 
 
 function displayMarketDetails(singleMarketDetail, i) {
+    var GoogleLink = singleMarketDetail.marketdetails.GoogleLink.split('%22');
+    console.log(GoogleLink.join(''));
     marketDetails = singleMarketDetail;
     var schedule = marketDetails.marketdetails.Schedule;
     var indexNum = schedule.indexOf(';')
