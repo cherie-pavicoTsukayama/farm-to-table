@@ -8,10 +8,17 @@ var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
 var closeZipCodeModalButton = document.getElementById('closeZipCodeModalButton');
 closeZipCodeModalButton.addEventListener('click', closeZipCodeModal);
+var loader = document.createElement('img');
 
 
 function getMarketResults() {
     userZip = parseInt(userZip);
+    //add loding message
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    loader.setAttribute('src', 'assets/images/Rolling-1s-200px-(1).gif')
+    loader.setAttribute('class', 'loader py-4')
+    loader.setAttribute('id', 'loader')
+    farmersMarketList.appendChild(loader);
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -20,6 +27,7 @@ function getMarketResults() {
             zip: userZip
         },
         dataType: 'jsonp',
+        //remove loading message in success and error handler
         success: displayMarketData,
         error: errorHandelingFarmersMarket
     });
@@ -65,6 +73,10 @@ function errorHandelingWeather() {
 }
 
 function errorHandelingFarmersMarket(){
+    var loader = document.getElementById('loader')
+    if (loader) {
+        destroyElement(loader);
+    }
     var farmersMarketList = document.getElementById('farmersMarketList');
     var errorMessageContainer = document.createElement('div');
     errorMessageContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center')
@@ -79,15 +91,12 @@ function errorHandelingFarmersMarket(){
 }
 
 function displayMarketData(data) {
+
     marketPlaceData = data.results;
     var marketName = null;
     var marketInfo = document.getElementsByClassName('market-info');
     var farmersMarketList = document.getElementById('farmersMarketList');
-    if(marketPlaceData.length === 0) {
-        var loader = document.createElement('img');
-        loader.setAttribute('src', 'assets/images/Rolling-1s-200px (1).gif')
-        farmersMarketList.appendChild(loader);
-    }
+
     for (var i = 0; i < marketPlaceData.length; i++) {
         var classList = ['market-name font-weight-bold mt-3', 'address', 'schedule', 'products']
         marketId = marketPlaceData[i].id;
@@ -210,13 +219,19 @@ function getMarketDetails(id, iterationNum, marketName) {
         },
         success: function (singleMarketDetail) {
             displayMarketDetails(singleMarketDetail, iterationNum, marketName)
+
         },
         error: console.error
     })
+
 }
 
 
 function displayMarketDetails(singleMarketDetail, i, marketName) {
+    var loader = document.getElementById('loader')
+    if (loader) {
+        destroyElement(loader);
+    }
     var googleLinkToModify = singleMarketDetail.marketdetails.GoogleLink.split('%22');
     var openToGoogleMapsLink = googleLinkToModify.join('');
     marketDetails = singleMarketDetail;
@@ -244,9 +259,7 @@ function displayMarketDetails(singleMarketDetail, i, marketName) {
 function getZipCode(event) {
     event.preventDefault();
     userZip = document.getElementById('zip').value;
-    console.log(userZip);
     if (/^\d{5}(-\d{4})?$/.test(userZip) === false) {
-        // alert("Please Enter Zip Code");
         var zipCodeModal = document.getElementById('zipCodeModal');
         zipCodeModal.classList.remove('hidden');
         return;
@@ -268,6 +281,10 @@ function destroyFarmersMarketList(){
 }
 
 function destroyWeatherContainer(element){
+    element.remove();
+}
+
+function destroyElement(element) {
     element.remove();
 }
 
