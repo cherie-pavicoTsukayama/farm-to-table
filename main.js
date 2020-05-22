@@ -13,10 +13,9 @@ var loader = document.createElement('img');
 
 function getMarketResults() {
     userZip = parseInt(userZip);
-    //add loding message
     var farmersMarketList = document.getElementById('farmersMarketList');
     loader.setAttribute('src', 'assets/images/Rolling-1s-200px-(1).gif')
-    loader.setAttribute('class', 'loader py-4')
+    loader.setAttribute('class', 'loader pb-4')
     loader.setAttribute('id', 'loader')
     farmersMarketList.appendChild(loader);
     $.ajax({
@@ -27,7 +26,6 @@ function getMarketResults() {
             zip: userZip
         },
         dataType: 'jsonp',
-        //remove loading message in success and error handler
         success: displayMarketData,
         error: errorHandelingFarmersMarket
     });
@@ -264,6 +262,7 @@ function getZipCode(event) {
         zipCodeModal.classList.remove('hidden');
         return;
     }
+
     getWeather(userZip);
     destroyFarmersMarketList();
     getMarketResults();
