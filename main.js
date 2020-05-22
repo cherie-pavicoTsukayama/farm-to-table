@@ -8,16 +8,9 @@ var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
 var closeZipCodeModalButton = document.getElementById('closeZipCodeModalButton');
 closeZipCodeModalButton.addEventListener('click', closeZipCodeModal);
-var loader = document.createElement('img');
-
 
 function getMarketResults() {
     userZip = parseInt(userZip);
-    var farmersMarketList = document.getElementById('farmersMarketList');
-    loader.setAttribute('src', 'assets/images/Rolling-1s-200px-(1).gif')
-    loader.setAttribute('class', 'loader pb-4')
-    loader.setAttribute('id', 'loader')
-    farmersMarketList.appendChild(loader);
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -227,8 +220,9 @@ function getMarketDetails(id, iterationNum, marketName) {
 
 function displayMarketDetails(singleMarketDetail, i, marketName) {
     var loader = document.getElementById('loader')
-    if (loader) {
-        destroyElement(loader);
+    console.log(loader.classList)
+    if (loader.classList.length === 3) {
+        loader.classList.add('hidden');
     }
     var googleLinkToModify = singleMarketDetail.marketdetails.GoogleLink.split('%22');
     var openToGoogleMapsLink = googleLinkToModify.join('');
@@ -262,7 +256,8 @@ function getZipCode(event) {
         zipCodeModal.classList.remove('hidden');
         return;
     }
-
+    var loader = document.getElementById('loader');
+    loader.classList.remove('hidden');
     getWeather(userZip);
     destroyFarmersMarketList();
     getMarketResults();
