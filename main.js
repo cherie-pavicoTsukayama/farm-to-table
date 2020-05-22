@@ -8,16 +8,9 @@ var findMarketButton = document.getElementById('findMarket');
 findMarketButton.addEventListener('click', getZipCode);
 var closeZipCodeModalButton = document.getElementById('closeZipCodeModalButton');
 closeZipCodeModalButton.addEventListener('click', closeZipCodeModal);
-// var loader = document.createElement('img');
-
 
 function getMarketResults() {
     userZip = parseInt(userZip);
-    // var farmersMarketList = document.getElementById('farmersMarketList');
-    // loader.setAttribute('src', 'assets/images/Rolling-1s-200px-(1).gif')
-    // loader.setAttribute('class', 'loader pb-4')
-    // loader.setAttribute('id', 'loader')
-    // farmersMarketList.appendChild(loader);
     $.ajax({
         type: "GET",
         contentType: "application/json; charset=utf-8",
