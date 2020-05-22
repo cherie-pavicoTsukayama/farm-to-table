@@ -66,6 +66,10 @@ h1 {
     height: 500px;
 }
 
+.loader {
+    width: 4rem;
+}
+
 button {
     border-radius: 3px;
 }
