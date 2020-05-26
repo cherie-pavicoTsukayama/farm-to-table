@@ -66,7 +66,7 @@ function errorHandelingWeather() {
 function errorHandelingFarmersMarket(){
     var loader = document.getElementById('loader')
     if (loader) {
-        destroyElement(loader);
+        loader.classList.add('hidden');
     }
     var farmersMarketList = document.getElementById('farmersMarketList');
     var errorMessageContainer = document.createElement('div');
@@ -79,10 +79,33 @@ function errorHandelingFarmersMarket(){
     errorMessage.appendChild(errorParagraph);
     errorMessageContainer.appendChild(errorMessage);
     farmersMarketList.appendChild(errorMessageContainer);
+    return;
+}
+
+function errorHandelingWrongZipCode() {
+    var loader = document.getElementById('loader')
+    if (loader) {
+        loader.classList.add('hidden');
+    }
+    var farmersMarketList = document.getElementById('farmersMarketList');
+    var errorMessageContainer = document.createElement('div');
+    errorMessageContainer.setAttribute('class', 'd-flex flex-wrap mb-5 col-xs-12 col-md-12 col-lg-12 justify-content-center')
+    var errorMessage = document.createElement('div');
+    errorMessage.setAttribute('class', 'error-message-div col-9 pt-2 pb-2');
+    var errorParagraph = document.createElement('p');
+    errorParagraph.setAttribute('class', 'text-center m-0')
+    errorParagraph.textContent = 'Zip code not found. Please try again';
+    errorMessage.appendChild(errorParagraph);
+    errorMessageContainer.appendChild(errorMessage);
+    farmersMarketList.appendChild(errorMessageContainer);
+    return;
 }
 
 function displayMarketData(data) {
-
+    if (data.results[0].id === "Error") {
+        errorHandelingWrongZipCode();
+        return;
+    }
     marketPlaceData = data.results;
     var marketName = null;
     var marketInfo = document.getElementsByClassName('market-info');
@@ -212,7 +235,7 @@ function getMarketDetails(id, iterationNum, marketName) {
             displayMarketDetails(singleMarketDetail, iterationNum, marketName)
 
         },
-        error: console.error
+        error: errorHandelingFarmersMarket
     })
 
 }
@@ -220,7 +243,6 @@ function getMarketDetails(id, iterationNum, marketName) {
 
 function displayMarketDetails(singleMarketDetail, i, marketName) {
     var loader = document.getElementById('loader')
-    console.log(loader.classList)
     if (loader.classList.length === 3) {
         loader.classList.add('hidden');
     }
@@ -254,6 +276,8 @@ function getZipCode(event) {
     if (/^\d{5}(-\d{4})?$/.test(userZip) === false) {
         var zipCodeModal = document.getElementById('zipCodeModal');
         zipCodeModal.classList.remove('hidden');
+        var hero = document.getElementById('hero');
+        hero.classList.add("avoid-clicks");
         return;
     }
     var loader = document.getElementById('loader');
@@ -285,5 +309,7 @@ function destroyElement(element) {
 function closeZipCodeModal() {
     var zipCodeModal = document.getElementById('zipCodeModal');
     zipCodeModal.classList.add('hidden');
+    var hero = document.getElementById('hero');
+    hero.classList.remove("avoid-clicks");
 
 }

@@ -134,6 +134,10 @@ input {
     box-shadow:         3px 3px 10px 4px rgba(0, 0, 0, .3);
 }
 
+.avoid-clicks {
+    pointer-events: none;
+}
+
 .weather-icon-01d, .weather-icon-01n {
     background-image: url(assets/weatherIcons/clear-sky-01d.png);
 }
